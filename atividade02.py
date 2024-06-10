@@ -1,41 +1,19 @@
-public class atividade02 {
-    private String nome;
-    private int idade;
+def main():
+    
+    vetor = []
+    for i in range(15):
+        elemento = int(input(f"Digite o {i+1}º elemento: "))
+        vetor.append(elemento)
 
-    public atividade02(String nome, int idade) {
-        this.nome = nome;
-        this.idade = idade;
-    }
+    
+    posicoes = [posicao for posicao, elemento in enumerate(vetor) if elemento == 30]
 
-    public String getNome() {
-        return nome;
-    }
+    
+    if posicoes:
+        print("Elemento 30 encontrado nas posições:", posicoes)
+    else:
+        print("Nenhum elemento igual a 30 encontrado.")
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
-
-    public void exibirInformacoes() {
-        System.out.println("Nome: " + nome);
-        System.out.println("Idade: " + idade);
-    }
-
-    public static void main(String[] args) {
-        atividade02 pessoa = new atividade02("João", 30);
-
-        pessoa.exibirInformacoes();
-
-        pessoa.setNome("Maria");
-        pessoa.setIdade(25);
-
-        pessoa.exibirInformacoes();
-    }
-}
+if __name__ == "__main__":
+    main()
