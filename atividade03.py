@@ -1,76 +1,39 @@
-public class atividade03 {
-    private String nome;
-    private int idade;
+def main():
+    
+    vendas = []
+    comissoes = []
+    nomes = []
 
-    public atividade03(String nome, int idade) {
-        this.nome = nome;
-        this.idade = idade;
-    }
+    
+    for i in range(10):
+        nome = input(f"Nome do vendedor {i+1}: ")
+        vendas.append(float(input("Total de vendas do vendedor: ")))
+        comissoes.append(float(input("Percentual de comissão (%): ")))
+        nomes.append(nome)
 
-    public String getNome() {
-        return nome;
-    }
+    
+    valores_receber = []
+    for venda, comissao in zip(vendas, comissoes):
+        valor_receber = venda * (comissao / 100)
+        valores_receber.append(valor_receber)
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    
+    print("\nRelatório:")
+    for nome, valor in zip(nomes, valores_receber):
+        print(f"{nome}: R${valor:.2f}")
 
-    public int getIdade() {
-        return idade;
-    }
+    
+    total_vendas = sum(vendas)
+    print("\nTotal das vendas de todos os vendedores:", total_vendas)
 
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
+    
+    maior_valor = max(valores_receber)
+    menor_valor = min(valores_receber)
+    maior_valor_nome = nomes[valores_receber.index(maior_valor)]
+    menor_valor_nome = nomes[valores_receber.index(menor_valor)]
+    print("Maior valor a receber:", maior_valor, "- Receberá:", maior_valor_nome)
+    print("Menor valor a receber:", menor_valor, "- Receberá:", menor_valor_nome)
 
-    public void exibirInformacoes() {
-        System.out.println("Nome: " + nome);
-        System.out.println("Idade: " + idade);
-    }
 
-    public static void main(String[] args) {
-        atividade03 pessoa = new atividade03("João", 30);
-
-        pessoa.exibirInformacoes();
-
-        pessoa.setNome("Maria");
-        pessoa.setIdade(25);
-
-        pessoa.exibirInformacoes();
-    }
-}
-
-class Estudante extends atividade03 {
-    private String curso;
-
-    public Estudante(String nome, int idade, String curso) {
-        super(nome, idade);
-        this.curso = curso;
-    }
-
-    public String getCurso() {
-        return curso;
-    }
-
-    public void setCurso(String curso) {
-        this.curso = curso;
-    }
-
-    @Override
-    public void exibirInformacoes() {
-        super.exibirInformacoes();
-        System.out.println("Curso: " + curso);
-    }
-
-    public static void main(String[] args) {
-        Estudante estudante = new Estudante("Ana", 22, "Engenharia");
-
-        estudante.exibirInformacoes();
-
-        estudante.setNome("Carlos");
-        estudante.setIdade(23);
-        estudante.setCurso("Medicina");
-
-        estudante.exibirInformacoes();
-    }
-}
+if __name__ == "__main__":
+    main()
