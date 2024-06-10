@@ -1,41 +1,20 @@
-import java.util.ArrayList;
-import java.util.List;
+def eh_primo(numero):
+    if numero <= 1:
+        return False
+    for i in range(2, int(numero ** 0.5) + 1):
+        if numero % i == 0:
+            return False
+    return True
 
+def main():
+    numero = int(input("Digite um número inteiro positivo: "))
+    if numero <= 0:
+        print("O número deve ser positivo.")
+    else:
+        if eh_primo(numero):
+            print(numero, "é primo.")
+        else:
+            print(numero, "não é primo.")
 
-abstract class Veiculo {
-    
-    public abstract void mover();
-}
-
-
-class Carro extends Veiculo {
-    @Override
-    public void mover() {
-        System.out.println("Carro se moveu na estrada.");
-    }
-}
-
-
-class Moto extends Veiculo {
-    @Override
-    public void mover() {
-        System.out.println("Moto se moveu na rodovia.");
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        
-        List<Veiculo> veiculos = new ArrayList<>();
-
-        
-        veiculos.add(new Carro());
-        veiculos.add(new Moto());
-
-        
-        for (Veiculo veiculo : veiculos) {
-            veiculo.mover();
-        }
-    }
-}
-
+if __name__ == "__main__":
+    main()
