@@ -1,70 +1,30 @@
-public class atividade04 {
-    private String nome;
-    private int idade;
+def main():
+    
+    produtos = []
+    precos = []
 
-    public atividade04(String nome, int idade) {
-        this.nome = nome;
-        this.idade = idade;
-    }
+    
+    for i in range(5):
+        produto = input(f"Nome do produto {i+1}: ")
+        preco = float(input("Preço do produto: R$"))
+        produtos.append(produto)
+        precos.append(preco)
 
-    public String getNome() {
-        return nome;
-    }
+    
+    qtd_inferior_50 = sum(1 for preco in precos if preco < 50)
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    
+    produtos_50_100 = [produtos[i] for i in range(len(produtos)) if 50 <= precos[i] <= 100]
 
-    public int getIdade() {
-        return idade;
-    }
+    
+    precos_superior_100 = [preco for preco in precos if preco > 100]
+    media_precos_superior_100 = sum(precos_superior_100) / len(precos_superior_100) if precos_superior_100 else 0
 
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
+    
+    print("\nQuantidade de produtos com preço inferior a R$ 50,00:", qtd_inferior_50)
+    print("Nome dos produtos com preço entre R$ 50,00 e R$ 100,00:", produtos_50_100)
+    print("Média dos preços dos produtos com preço superior a R$ 100,00: R${:.2f}".format(media_precos_superior_100))
 
-    public void exibirInformacoes() {
-        System.out.println("Nome: " + nome);
-        System.out.println("Idade: " + idade);
-    }
 
-    public static void main(String[] args) {
-        atividade04 pessoa = new atividade04("João", 30);
-        pessoa.exibirInformacoes();
-        pessoa.setNome("Maria");
-        pessoa.setIdade(25);
-        pessoa.exibirInformacoes();
-    }
-}
-
-class Estudante extends atividade04 {
-    private String curso;
-
-    public Estudante(String nome, int idade, String curso) {
-        super(nome, idade);
-        this.curso = curso;
-    }
-
-    public String getCurso() {
-        return curso;
-    }
-
-    public void setCurso(String curso) {
-        this.curso = curso;
-    }
-
-    @Override
-    public void exibirInformacoes() {
-        super.exibirInformacoes();
-        System.out.println("Curso: " + curso);
-    }
-
-    public static void main(String[] args) {
-        Estudante estudante = new Estudante("Ana", 22, "Engenharia");
-        estudante.exibirInformacoes();
-        estudante.setNome("Carlos");
-        estudante.setIdade(23);
-        estudante.setCurso("Medicina");
-        estudante.exibirInformacoes();
-    }
-}
+if __name__ == "__main__":
+    main()
