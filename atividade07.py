@@ -1,79 +1,14 @@
-public class atividade06 {
-    private String nome;
-    private int idade;
+def converter_para_segundos(horas, minutos, segundos):
+    total_segundos = horas * 3600 + minutos * 60 + segundos
+    return total_segundos
 
-    
-    public atividade06(String nome, int idade) {
-        this.nome = nome;
-        this.idade = idade;
-    }
+def main():
+    horas = int(input("Digite o número de horas: "))
+    minutos = int(input("Digite o número de minutos: "))
+    segundos = int(input("Digite o número de segundos: "))
 
-    
-    public atividade06(String nome) {
-        this(nome, 0); 
-    }
+    total_segundos = converter_para_segundos(horas, minutos, segundos)
+    print(f"{horas}h, {minutos}min e {segundos}seg correspondem a {total_segundos} segundos.")
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
-
-    public void exibirInformacoes() {
-        System.out.println("Nome: " + nome);
-        System.out.println("Idade: " + idade);
-    }
-}
-
-class Estudante extends atividade06 {
-    private String curso;
-
-    public Estudante(String nome, int idade, String curso) {
-        super(nome, idade);
-        this.curso = curso;
-    }
-
-    
-    public Estudante(String nome, String curso) {
-        super(nome);
-        this.curso = curso;
-    }
-
-    public String getCurso() {
-        return curso;
-    }
-
-    public void setCurso(String curso) {
-        this.curso = curso;
-    }
-
-    @Override
-    public void exibirInformacoes() {
-        super.exibirInformacoes();
-        System.out.println("Curso: " + curso);
-    }
-
-    public static void main(String[] args) {
-        atividade06 pessoa1 = new atividade06("João", 30);
-        pessoa1.exibirInformacoes();
-
-        atividade06 pessoa2 = new atividade06("Maria");
-        pessoa2.exibirInformacoes();
-
-        Estudante estudante1 = new Estudante("Ana", 22, "Engenharia");
-        estudante1.exibirInformacoes();
-
-        Estudante estudante2 = new Estudante("Carlos", 28, "Medicina");
-        estudante2.exibirInformacoes();
-    }
-}
+if __name__ == "__main__":
+    main()
