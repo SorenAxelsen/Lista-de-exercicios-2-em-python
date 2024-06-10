@@ -1,59 +1,18 @@
+def fatorial(n):
+    if n == 0:
+        return 1
+    resultado = 1
+    for i in range(1, n + 1):
+        resultado *= i
+    return resultado
 
-interface Trabalhador {
-    void trabalhar();
-}
+def main():
+    numero = int(input("Digite um número inteiro positivo: "))
+    if numero < 0:
+        print("O número deve ser positivo.")
+    else:
+        resultado = fatorial(numero)
+        print(f"O fatorial de {numero} é:", resultado)
 
-
-class atividade07 implements Trabalhador {
-    protected double salario;
-    protected String departamento;
-
-    public atividade07(double salario, String departamento) {
-        this.salario = salario;
-        this.departamento = departamento;
-    }
-
-    public void exibirInformacoes() {
-        System.out.println("Salário: " + salario);
-        System.out.println("Departamento: " + departamento);
-    }
-
-    @Override
-    public void trabalhar() {
-        System.out.println("Funcionário está trabalhando.");
-    }
-
-    public static void main(String[] args) {
-        atividade07 funcionario = new atividade07(3000, "TI");
-        funcionario.trabalhar();
-    }
-}
-
-
-class Gerente extends atividade07 {
-    private double bonus;
-
-    public Gerente(double salario, String departamento, double bonus) {
-        super(salario, departamento);
-        this.bonus = bonus;
-    }
-
-    @Override
-    public void trabalhar() {
-        System.out.println("Gerente está trabalhando.");
-    }
-
-    
-    public double getBonus() {
-        return bonus;
-    }
-
-    public void setBonus(double bonus) {
-        this.bonus = bonus;
-    }
-
-    public static void main(String[] args) {
-        Gerente gerente = new Gerente(5000, "Administração", 1000);
-        gerente.trabalhar();
-    }
-}
+if __name__ == "__main__":
+    main()
